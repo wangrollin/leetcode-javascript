@@ -21,7 +21,12 @@
  * Solution1
  * 先用位运算拿到奇数位和偶数位，然后移动一位，最后合并起来
  */
-var exchangeBits = function (num) {
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+let exchangeBits = function (num) {
 
     let odd = num & 0x55555555;
     let even = num & 0xaaaaaaaa;
