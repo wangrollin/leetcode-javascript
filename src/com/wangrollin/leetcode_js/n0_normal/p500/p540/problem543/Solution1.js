@@ -58,7 +58,6 @@ let diameterOfBinaryTree = function (root) {
 
 
 /**
- *
  * @param {TreeNode} node
  * @returns {Pair}
  */
