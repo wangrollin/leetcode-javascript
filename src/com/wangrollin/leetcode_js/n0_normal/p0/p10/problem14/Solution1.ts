@@ -22,24 +22,19 @@
  * Solution1
  * 从前到后，对比每一位是否相同
  */
+function longestCommonPrefix(strs: string[]): string {
 
-/**
- * @param {string[]} strs
- * @return {string}
- */
-let longestCommonPrefix = function (strs) {
-
-    let result = "";
+    let result: string = "";
 
     if (strs.length === 0) {
         return result;
     }
 
-    let len = strs.map(str => str.length).sort()[0];
+    let len: number = strs.map(str => str.length).sort()[0];
 
-    for (let i = 0; i < len; i++) {
+    for (let i: number = 0; i < len; i++) {
 
-        let charArr = strs.map(str => str[i]);
+        let charArr: Array<string> = strs.map(str => str[i]);
         if (charArr.every(ch => ch === charArr[0])) {
             result += charArr[0];
         } else {
@@ -48,4 +43,4 @@ let longestCommonPrefix = function (strs) {
     }
 
     return result;
-};
+}

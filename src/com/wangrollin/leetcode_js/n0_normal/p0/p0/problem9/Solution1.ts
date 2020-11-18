@@ -26,16 +26,11 @@
  * Solution1
  * 最简单的方式，转换成字符串，左右比较
  */
+function isPalindrome(x: number): boolean {
 
-/**
- * @param {number} x
- * @return {boolean}
- */
-let isPalindrome = function (x) {
+    let intStr: string = x.toString();
 
-    let intStr = x.toString();
-
-    for (let left = 0, right = intStr.length - 1; left < right; left++, right--) {
+    for (let left: number = 0, right: number = intStr.length - 1; left < right; left++, right--) {
 
         if (intStr[left] !== intStr[right]) {
             return false;
@@ -43,4 +38,4 @@ let isPalindrome = function (x) {
     }
 
     return true;
-};
+}
