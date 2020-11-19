@@ -33,22 +33,17 @@
  * Solution1
  * 循环生成
  */
+function countAndSay(n: number): string {
 
-/**
- * @param {number} n
- * @return {string}
- */
-let countAndSay = function (n) {
+    let intStr: string = "1";
 
-    let intStr = "1";
+    for (let i: number = 1; i < n; i++) {
 
-    for (let i = 1; i < n; i++) {
+        let curChar: string = intStr[0];
+        let count: number = 1;
+        let result: string = "";
 
-        let curChar = intStr[0];
-        let count = 1;
-        let result = "";
-
-        for (let j = 1; j < intStr.length; j++) {
+        for (let j: number = 1; j < intStr.length; j++) {
 
             if (curChar === intStr[j]) {
                 count++;
@@ -64,4 +59,4 @@ let countAndSay = function (n) {
     }
 
     return intStr;
-};
+}

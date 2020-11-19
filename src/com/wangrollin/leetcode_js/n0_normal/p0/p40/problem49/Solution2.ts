@@ -22,37 +22,32 @@
  * Solution2
  * 使用letter count map作为key，存储list，最后汇总
  */
+function groupAnagrams2(strs: string[]): string[][] {
 
-/**
- * @param {string[]} strs
- * @return {string[][]}
- */
-let groupAnagrams = function (strs) {
-
-    let resultMap = new Map();
+    let resultMap: Map<string, Array<string>> = new Map();
 
     strs.forEach(word => {
 
-        let keyMap = new Map();
+        let keyMap: Map<string, number> = new Map();
 
         word.split("").forEach(value => {
             if (keyMap.has(value)) {
-                keyMap.set(value, keyMap.get(value) + 1);
+                keyMap.set(value, keyMap.get(value)! + 1);
             } else {
                 keyMap.set(value, 1);
             }
         });
 
-        let keyMapStr = JSON.stringify([...keyMap].sort());
+        let keyMapStr: string = JSON.stringify([...keyMap].sort());
 
         if (resultMap.has(keyMapStr)) {
-            resultMap.get(keyMapStr).push(word);
+            resultMap.get(keyMapStr)!.push(word);
         } else {
             resultMap.set(keyMapStr, [word]);
         }
     });
 
-    let result = [];
+    let result: Array<Array<string>> = [];
     resultMap.forEach(value => result.push(value));
     return result;
 }

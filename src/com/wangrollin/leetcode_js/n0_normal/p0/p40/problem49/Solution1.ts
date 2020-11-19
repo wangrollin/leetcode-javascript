@@ -22,27 +22,23 @@
  * Solution1
  * 使用排序后的str作为key，存储list，最后汇总
  */
+function groupAnagrams(strs: string[]): string[][] {
 
-/**
- * @param {string[]} strs
- * @return {string[][]}
- */
-let groupAnagrams = function (strs) {
-
-    let resultMap = new Map();
+    let resultMap: Map<string, Array<string>> = new Map();
 
     strs.forEach(word => {
 
-        let key = word.split("").sort().join("");
+        let key: string = word.split("").sort().join("");
 
         if (resultMap.has(key)) {
-            resultMap.get(key).push(word);
+            resultMap.get(key)?.push(word);
         } else {
             resultMap.set(key, [word]);
         }
     });
 
-    let result = [];
+    let result: Array<Array<string>> = [];
     resultMap.forEach(value => result.push(value));
     return result;
-};
+}
+

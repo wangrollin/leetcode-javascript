@@ -23,13 +23,7 @@
  * Solution1
  * 遍历对比
  */
-
-/**
- * @param {string} haystack
- * @param {string} needle
- * @return {number}
- */
-let strStr = function (haystack, needle) {
+function strStr(haystack: string, needle: string): number {
 
     if (needle == null || needle === "") {
         return 0;
@@ -38,7 +32,7 @@ let strStr = function (haystack, needle) {
         return -1;
     }
 
-    for (let i = 0; i <= haystack.length - needle.length; i++) {
+    for (let i: number = 0; i <= haystack.length - needle.length; i++) {
 
         if (checkTheRest(haystack, needle, i)) {
             return i;
@@ -46,21 +40,14 @@ let strStr = function (haystack, needle) {
     }
 
     return -1;
-};
+}
 
-/**
- *
- * @param {string} haystack
- * @param {string} needle
- * @param {number} startIndex
- * @returns {boolean}
- */
-let checkTheRest = function (haystack, needle, startIndex) {
+function checkTheRest(haystack: string, needle: string, startIndex: number): boolean {
 
-    for (let i = 0; i < needle.length; i++, startIndex++) {
+    for (let i: number = 0; i < needle.length; i++, startIndex++) {
         if (haystack[startIndex] !== needle[i]) {
             return false;
         }
     }
     return true;
-};
+}

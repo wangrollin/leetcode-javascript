@@ -25,19 +25,13 @@
  * Solution1
  * 二分法查找
  */
-
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-let searchInsert = function (nums, target) {
+function searchInsert(nums: number[], target: number): number {
 
     if (nums == null || nums.length === 0) {
         return 0;
     }
-    let left = 0;
-    let right = nums.length;
+    let left: number = 0;
+    let right: number = nums.length;
     while (true) {
         if (left === right) {
             return right;
@@ -50,4 +44,4 @@ let searchInsert = function (nums, target) {
             return Math.floor((left + right) / 2);
         }
     }
-};
+}
