@@ -17,18 +17,15 @@
  * Solution1
  * 遍历一遍
  */
+export {}
 
-/**
- * @param {string[]} words
- * @return {string[]}
- */
-let findWords = function (words) {
+function findWords(words: string[]): string[] {
 
-    let result = [];
+    let result: string[] = [];
 
     for (let word of words) {
-        let whichLine = whereIs(word.toLowerCase()[0]);
-        let isInOneLine = true;
+        let whichLine: number = whereIs(word.toLowerCase()[0]);
+        let isInOneLine: boolean = true;
         for (let c of word.toLowerCase().split("")) {
             if (whichLine !== whereIs(c)) {
                 isInOneLine = false;
@@ -41,13 +38,9 @@ let findWords = function (words) {
     }
 
     return result;
-};
+}
 
-/**
- * @param {string} c
- * @returns {number}
- */
-let whereIs = function (c) {
+function whereIs(c: string): number {
 
     switch (c) {
         case 'q': case 'w': case 'e': case 'r': case 't':

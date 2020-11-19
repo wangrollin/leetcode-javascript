@@ -11,33 +11,23 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+// todo 此题在leetcode官网没有ts版本，等官网有了就补上
+export {}
 
-class Node {
+function preorder(root: Node): number[] {
 
-    constructor(val, children) {
-        this.val = val;
-        this.children = children;
-    }
-}
-
-/**
- * @param {Node} root
- * @return {number[]}
- */
-let preorder = function (root) {
-
-    let result = [];
+    let result: number[] = [];
 
     if (root == null) {
         return result;
     }
 
-    let stack = [];
+    let stack: Node[] = [];
     stack.push(root);
 
     while (stack.length !== 0) {
 
-        let node = stack.pop();
+        let node: Node = stack.pop()!;
         result.push(node.val);
         node.children
             .reverse()
@@ -45,4 +35,15 @@ let preorder = function (root) {
     }
 
     return result;
-};
+}
+
+class Node {
+
+    val: number
+    children: Node[]
+
+    constructor(val?: number, children?: Node[]) {
+        this.val = (val === undefined ? 0 : val)
+        this.children = (children === undefined ? [] : children)
+    }
+}

@@ -34,20 +34,9 @@
  * Solution1
  * 递归，回溯，前序遍历
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} t
- * @return {string}
- */
-let tree2str = function (t) {
+function tree2str(t: TreeNode | null): string {
 
     if (t == null) {
         return "";
@@ -62,4 +51,17 @@ let tree2str = function (t) {
     } else {
         return t.val + "()(" + tree2str(t.right) + ")";
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

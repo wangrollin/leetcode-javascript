@@ -24,13 +24,10 @@
  * Solution1
  * 可以遍历一遍，也可以进行字符串比较
  */
+export {}
 
-/**
- * @param {string} word
- * @return {boolean}
- */
-let detectCapitalUse = function (word) {
+function detectCapitalUse(word: string): boolean {
 
     return word === word.toLowerCase() || word === word.toUpperCase()
         || word === (word.substring(0, 1).toUpperCase()[0] + word.substring(1).toLowerCase());
-};
+}

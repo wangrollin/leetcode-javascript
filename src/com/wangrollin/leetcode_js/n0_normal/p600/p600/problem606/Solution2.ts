@@ -34,44 +34,33 @@
  * Solution2
  * 迭代，前序遍历，用stack（来做遍历）和set（来做回溯），前序遍历
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} t
- * @return {string}
- */
-let tree2str = function (t) {
+function tree2str(t: TreeNode | null): string {
 
     if (t == null) {
         return "";
     }
 
-    let stack = [];
-    stack.push(t);
-    let leftSet = new Set();
-    let rightSet = new Set();
-    let result = [];
+    let stack: TreeNode[] = [];
+    stack.push(t!);
+    let leftSet: Set<TreeNode> = new Set();
+    let rightSet: Set<TreeNode> = new Set();
+    let result: string[] = [];
 
     while (stack.length !== 0) {
 
-        let node = stack[stack.length - 1];
+        let node: TreeNode = stack[stack.length - 1];
 
         if (node.left == null && node.right == null) {
-            result.push(node.val);
+            result.push(node.val.toString());
             stack.pop();
             continue;
         }
 
         if (node.left != null && node.right != null) {
             if (!leftSet.has(node)) {
-                result.push(node.val, "(");
+                result.push(node.val.toString(), "(");
                 stack.push(node.left);
                 leftSet.add(node);
             } else if (!rightSet.has(node)) {
@@ -89,7 +78,7 @@ let tree2str = function (t) {
 
         if (node.left != null && node.right == null) {
             if (!leftSet.has(node)) {
-                result.push(node.val, "(");
+                result.push(node.val.toString(), "(");
                 stack.push(node.left);
                 leftSet.add(node);
             } else {
@@ -102,7 +91,7 @@ let tree2str = function (t) {
 
         if (node.left == null && node.right != null) {
             if (!rightSet.has(node)) {
-                result.push(node.val, "()(");
+                result.push(node.val.toString(), "()(");
                 stack.push(node.right);
                 rightSet.add(node);
             } else {
@@ -115,4 +104,17 @@ let tree2str = function (t) {
     }
 
     return result.join("");
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

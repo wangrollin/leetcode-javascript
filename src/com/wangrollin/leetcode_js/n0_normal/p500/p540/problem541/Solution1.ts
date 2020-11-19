@@ -17,19 +17,15 @@
  * Solution1
  * 直接计算出需要反转的区间，进行反转
  */
+export {}
 
-/**
- * @param {string} s
- * @param {number} k
- * @return {string}
- */
-let reverseStr = function (s, k) {
+function reverseStr(s: string, k: number): string {
 
-    let chars = s.split("");
+    let chars: string[] = s.split("");
 
-    for (let start = 0; start < chars.length; start += 2 * k) {
-        let i = start;
-        let j = Math.min(start + k - 1, chars.length - 1);
+    for (let start: number = 0; start < chars.length; start += 2 * k) {
+        let i: number = start;
+        let j: number = Math.min(start + k - 1, chars.length - 1);
         while (i < j) {
             let temp = chars[i];
             chars[i++] = chars[j];
@@ -38,4 +34,4 @@ let reverseStr = function (s, k) {
     }
 
     return chars.join("");
-};
+}

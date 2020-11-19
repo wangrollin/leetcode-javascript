@@ -37,18 +37,13 @@
  * Solution1
  * 暴力求解，即去真的模拟矩阵的数值变化，会超时；观察发现，其实要求的就是最大的重合面积
  */
+export {}
 
-/**
- * @param {number} m
- * @param {number} n
- * @param {number[][]} ops
- * @return {number}
- */
-let maxCount = function (m, n, ops) {
+function maxCount(m: number, n: number, ops: number[][]): number {
 
     for (let op of ops) {
         m = Math.min(m, op[0]);
         n = Math.min(n, op[1]);
     }
     return m * n;
-};
+}

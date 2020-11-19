@@ -14,33 +14,22 @@
  * Solution2
  * 迭代，层级遍历
  */
+export {}
 
-class Node {
-
-    constructor(val, children) {
-        this.val = val;
-        this.children = children;
-    }
-}
-
-/**
- * @param {Node} root
- * @return {number}
- */
-let maxDepth = function (root) {
+function maxDepth(root: Node): number {
 
     if (root == null) {
         return 0;
     }
 
-    let queue = [];
+    let queue: Node[] = [];
     queue.push(root);
-    let height = 0;
+    let height: number = 0;
 
     while (queue.length !== 0) {
-        let size = queue.length;
+        let size: number = queue.length;
         while (size > 0) {
-            let node = queue.shift();
+            let node: Node = queue.shift()!;
             if (node.children != null && node.children.length !== 0) {
                 node.children.forEach(child => queue.push(child));
             }
@@ -50,4 +39,15 @@ let maxDepth = function (root) {
     }
 
     return height;
-};
+}
+
+class Node {
+
+    val: number
+    children: Node[]
+
+    constructor(val?: number, children?: Node[]) {
+        this.val = (val === undefined ? 0 : val)
+        this.children = (children === undefined ? [] : children)
+    }
+}

@@ -14,25 +14,25 @@
  * Solution1
  * 递归，后序遍历
  */
+export {}
 
-class Node {
-
-    constructor(val, children) {
-        this.val = val;
-        this.children = children;
-    }
-}
-
-/**
- * @param {Node} root
- * @return {number}
- */
-let maxDepth = function (root) {
+function maxDepth(root: Node): number {
 
     if (root == null) {
         return 0;
     }
 
-    let max = Math.max(...root.children.map(child => maxDepth(child)));
+    let max: number = Math.max(...root.children.map(child => maxDepth(child)));
     return 1 + ([Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY].includes(max) ? 0 : max);
-};
+}
+
+class Node {
+
+    val: number
+    children: Node[]
+
+    constructor(val?: number, children?: Node[]) {
+        this.val = (val === undefined ? 0 : val)
+        this.children = (children === undefined ? [] : children)
+    }
+}

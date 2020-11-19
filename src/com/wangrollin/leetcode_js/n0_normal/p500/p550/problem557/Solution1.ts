@@ -14,16 +14,13 @@
  * Solution1
  * 使用split，reverse，trim
  */
+export {}
 
-/**
- * @param {string} s
- * @return {string}
- */
-let reverseWords = function (s) {
+function reverseWords(s: string): string {
 
-    let sb = [];
+    let sb: string[] = [];
     s.split(" ")
         .forEach(str => sb.push([...str].reverse().join(""), " "));
 
     return sb.join("").trim();
-};
+}

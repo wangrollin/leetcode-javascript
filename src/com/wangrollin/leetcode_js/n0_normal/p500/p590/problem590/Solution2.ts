@@ -11,34 +11,24 @@
  * Solution2
  * 广度优先遍历，BFS，迭代；也可以先用类似全序遍历的方式得到result，然后reverse就是后序遍历
  */
+// todo 此题在leetcode官网没有ts版本，等官网有了就补上
+export {}
 
-class Node {
+function postorder(root: Node): number[] {
 
-    constructor(val, children) {
-        this.val = val;
-        this.children = children;
-    }
-}
-
-/**
- * @param {Node} root
- * @return {number[]}
- */
-let postorder = function(root) {
-
-    let result = [];
+    let result: number[] = [];
 
     if (root == null) {
         return result;
     }
 
-    let stack = [];
+    let stack: Node[] = [];
     stack.push(root);
-    let set = new Set();
+    let set: Set<Node> = new Set();
 
     while (stack.length !== 0) {
 
-        let node = stack[stack.length - 1];
+        let node: Node = stack[stack.length - 1];
         if (set.has(node)) {
             set.delete(node);
             stack.pop();
@@ -52,4 +42,15 @@ let postorder = function(root) {
     }
 
     return result;
-};
+}
+
+class Node {
+
+    val: number
+    children: Node[]
+
+    constructor(val?: number, children?: Node[]) {
+        this.val = (val === undefined ? 0 : val)
+        this.children = (children === undefined ? [] : children)
+    }
+}

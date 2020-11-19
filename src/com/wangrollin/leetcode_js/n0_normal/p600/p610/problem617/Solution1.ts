@@ -29,21 +29,9 @@
  * Solution1
  * 递归
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} t1
- * @param {TreeNode} t2
- * @return {TreeNode}
- */
-let mergeTrees = function (t1, t2) {
+function mergeTrees(t1: TreeNode | null, t2: TreeNode | null): TreeNode | null {
 
     if (t1 == null) {
         return t2;
@@ -52,15 +40,11 @@ let mergeTrees = function (t1, t2) {
         return t1;
     }
 
-    merge(t1, t2);
+    merge(t1!, t2!);
     return t1;
-};
+}
 
-/**
- * @param {TreeNode} t1
- * @param {TreeNode} t2
- */
-let merge = function (t1, t2) {
+function merge(t1: TreeNode, t2: TreeNode) {
 
     t1.val += t2.val;
 
@@ -75,4 +59,17 @@ let merge = function (t1, t2) {
     } else if (t1.right == null && t2.right != null) {
         t1.right = t2.right;
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

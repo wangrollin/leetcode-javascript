@@ -21,16 +21,13 @@
  * Solution1
  * 先用位运算拿到奇数位和偶数位，然后移动一位，最后合并起来
  */
+export {}
 
-/**
- * @param {number} num
- * @return {number}
- */
-let exchangeBits = function (num) {
+function exchangeBits(num: number): number {
 
-    let odd = num & 0x55555555;
-    let even = num & 0xaaaaaaaa;
+    let odd: number = num & 0x55555555;
+    let even: number = num & 0xaaaaaaaa;
     odd <<= 1;
     even >>= 1;
     return odd | even;
-};
+}

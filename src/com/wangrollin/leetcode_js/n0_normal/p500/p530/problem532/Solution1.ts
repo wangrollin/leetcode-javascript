@@ -31,20 +31,16 @@
  * Solution1
  * o(n)时间的算法，用set记录两个数中较小的那个
  */
+export {}
 
-/**
- * @param {number[]} nums
- * @param {number} k
- * @return {number}
- */
-let findPairs = function (nums, k) {
+function findPairs(nums: number[], k: number): number {
 
     if (k < 0) {
         return 0;
     }
 
-    let result = new Set();
-    let numSet = new Set();
+    let result: Set<number> = new Set();
+    let numSet: Set<number> = new Set();
 
     nums.forEach(num => {
 
@@ -58,4 +54,4 @@ let findPairs = function (nums, k) {
     });
 
     return result.size;
-};
+}

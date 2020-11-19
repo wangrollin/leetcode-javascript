@@ -11,35 +11,33 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+// todo 此题在leetcode官网没有ts版本，等官网有了就补上
+export {}
 
-class Node {
+function preorder(root: Node): number[] {
 
-    constructor(val, children) {
-        this.val = val;
-        this.children = children;
-    }
-}
-
-/**
- * @param {Node} root
- * @return {number[]}
- */
-let preorder = function (root) {
-
-    let result = [];
+    let result: number[] = [];
     doPreorder(root, result);
     return result;
-};
+}
 
-/**
- * @param {Node} node
- * @param {number[]} result
- */
-let doPreorder = function (node, result) {
+function doPreorder(node: Node, result: number[]): number[] {
 
     if (node == null) {
         return;
     }
     result.push(node.val);
     node.children.forEach(child => doPreorder(child, result));
-};
+}
+
+
+class Node {
+
+    val: number
+    children: Node[]
+
+    constructor(val?: number, children?: Node[]) {
+        this.val = (val === undefined ? 0 : val)
+        this.children = (children === undefined ? [] : children)
+    }
+}

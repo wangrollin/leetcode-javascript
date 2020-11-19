@@ -25,19 +25,16 @@
  * Solution1
  * set保存种类数量，判断是否能提前返回
  */
+export {}
 
-/**
- * @param {number[]} candies
- * @return {number}
- */
-let distributeCandies = function (candies) {
+function distributeCandies(candyType: number[]): number {
 
-    let candyTypeSet = new Set();
-    for (let candyType of candies) {
-        candyTypeSet.add(candyType);
-        if (candyTypeSet.size === Math.floor(candies.length / 2)) {
+    let candyTypeSet: Set<number> = new Set();
+    for (let candy of candyType) {
+        candyTypeSet.add(candy);
+        if (candyTypeSet.size === Math.floor(candyType.length / 2)) {
             return candyTypeSet.size;
         }
     }
     return candyTypeSet.size;
-};
+}

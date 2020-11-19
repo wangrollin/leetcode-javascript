@@ -24,17 +24,13 @@
  * Solution1
  * 遍历判断前后，随时赋值
  */
+export {}
 
-/**
- * @param {number[]} flowerbed
- * @param {number} n
- * @return {boolean}
- */
-let canPlaceFlowers = function (flowerbed, n) {
+function canPlaceFlowers(flowerbed: number[], n: number): boolean {
 
-    let count = 0;
+    let count: number = 0;
 
-    for (let i = 0; i < flowerbed.length; i++) {
+    for (let i: number = 0; i < flowerbed.length; i++) {
 
         if (flowerbed[i] === 0 && (
             ((i === 0 && flowerbed.length === 1)
@@ -50,4 +46,4 @@ let canPlaceFlowers = function (flowerbed, n) {
         }
     }
     return false;
-};
+}

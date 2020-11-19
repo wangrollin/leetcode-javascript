@@ -28,59 +28,55 @@
  * Solution1
  * 递归，回溯，后序遍历
  */
+export {}
 
-class TreeNode {
-
-    constructor(val, left, right) {
-        this.val = (val === undefined ? 0 : val);
-        this.left = (left === undefined ? null : left);
-        this.right = (right === undefined ? null : right);
-    }
-}
-
-class Pair {
-
-    constructor(key, value) {
-        this.key = key;
-        this.value = value;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-let findTilt = function (root) {
+function findTilt(root: TreeNode | null): number {
 
     if (root == null) {
         return 0;
     }
 
-    let leftResult = cal(root.left);
-    let rightResult = cal(root.right);
+    let leftResult: Pair<number, number> = cal(root.left);
+    let rightResult: Pair<number, number> = cal(root.right);
 
     return Math.abs(leftResult.value - rightResult.value)
         + leftResult.key
         + rightResult.key;
-};
+}
 
-/**
- * @param {TreeNode} node
- * @returns {Pair}
- */
-let cal = function (node) {
+function cal(node: TreeNode | null): Pair<number, number> {
 
     // key: 坡度，value: 节点之和
     if (node == null) {
         return new Pair(0, 0);
     }
 
-    let leftResult = cal(node.left);
-    let rightResult = cal(node.right);
+    let leftResult: Pair<number, number> = cal(node.left);
+    let rightResult: Pair<number, number> = cal(node.right);
 
-    let tilt = Math.abs(leftResult.value - rightResult.value)
+    let tilt: number = Math.abs(leftResult.value - rightResult.value)
         + leftResult.key
         + rightResult.key;
-    let sum = leftResult.value + rightResult.value + node.val;
+    let sum: number = leftResult.value + rightResult.value + node.val;
     return new Pair(tilt, sum);
-};
+}
+
+class Pair<K, V> {
+
+    constructor(public key: K, public value: V) {
+
+    }
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

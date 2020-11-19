@@ -19,29 +19,26 @@
  * Solution1
  * 取余
  */
+export {}
 
-/**
- * @param {number} num
- * @return {string}
- */
-let convertToBase7 = function (num) {
+function convertToBase7(num: number): string {
 
     if (num === 0) {
         return "0";
     }
 
-    let pre = "";
+    let pre: string = "";
     if (num < 0) {
         pre = "-";
         num *= -1;
     }
 
-    let sb = [];
+    let sb: string[] = [];
     while (num !== 0) {
-        sb.push(num % 7);
+        sb.push((num % 7).toString());
         num = Math.floor(num / 7);
     }
 
     sb.push(pre);
     return sb.reverse().join("");
-};
+}
