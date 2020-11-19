@@ -14,23 +14,23 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/move-zeroes
  *
- * Solution2
- * 一边遍历，一边互换
+ * Solution1
+ * 把非零挪好，然后统一刷零
  */
+export {}
 
 /**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead.
+ Do not return anything, modify nums in-place instead.
  */
-let moveZeroes = function (nums) {
+function moveZeroes(nums: number[]): void {
 
     if (nums == null || nums.length <= 1) {
         return;
     }
 
-    let slowPoint = 0;
-    let fastPoint = 0;
-    for (let i = 0; i < nums.length; i++) {
+    let slowPoint: number = 0;
+    let fastPoint: number = 0;
+    for (let i: number = 0; i < nums.length; i++) {
         if (i === nums.length - 1) {
             return;
         }
@@ -43,12 +43,13 @@ let moveZeroes = function (nums) {
 
     while (fastPoint < nums.length) {
         if (nums[fastPoint] !== 0) {
-            nums[slowPoint] = nums[fastPoint];
-            nums[fastPoint] = 0;
-            ++slowPoint;
-            ++fastPoint;
+            nums[slowPoint++] = nums[fastPoint++];
         } else {
             ++fastPoint;
         }
     }
-};
+
+    while (slowPoint < nums.length) {
+        nums[slowPoint++] = 0;
+    }
+}

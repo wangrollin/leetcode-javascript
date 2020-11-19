@@ -29,15 +29,12 @@
  * Solution1
  * 一直除下去
  */
+export {}
 
-/**
- * @param {number} num
- * @return {boolean}
- */
-let isUgly = function (num) {
+function isUgly(num: number): boolean {
 
     while (true) {
-        let tmp = num;
+        let tmp: number = num;
         num = num % 2 === 0 ? Math.floor(num / 2) : num;
         num = num % 3 === 0 ? Math.floor(num / 3) : num;
         num = num % 5 === 0 ? Math.floor(num / 5) : num;
@@ -49,4 +46,4 @@ let isUgly = function (num) {
             return false;
         }
     }
-};
+}

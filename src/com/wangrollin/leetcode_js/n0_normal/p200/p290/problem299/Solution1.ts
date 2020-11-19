@@ -25,17 +25,13 @@
  * Solution1
  * 数字的长度len = 猜对数字和位置的数量bull + 猜对数字但是没猜对位置的数量cow + 没猜对数字的数量sum
  */
+export {}
 
-/**
- * @param {string} secret
- * @param {string} guess
- * @return {string}
- */
-let getHint = function (secret, guess) {
+function getHint(secret: string, guess: string): string {
 
-    let bucket = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let bull = 0;
-    for (let i = 0; i < secret.length; i++) {
+    let bucket: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let bull: number = 0;
+    for (let i: number = 0; i < secret.length; i++) {
         if (secret[i] === guess[i]) {
             ++bull;
         } else {
@@ -43,9 +39,9 @@ let getHint = function (secret, guess) {
             --bucket[guess.charCodeAt(i) - '0'.charCodeAt(0)];
         }
     }
-    let sum = 0;
-    for (let i = 0; i < 10; i++) {
+    let sum: number = 0;
+    for (let i: number = 0; i < 10; i++) {
         sum += Math.max(bucket[i], 0);
     }
     return bull + "A" + (secret.length - bull - sum) + "B";
-};
+}

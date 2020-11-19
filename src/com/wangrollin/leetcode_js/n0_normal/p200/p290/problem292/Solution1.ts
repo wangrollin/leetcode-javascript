@@ -16,12 +16,9 @@
  * Solution1
  * 推导公式
  */
+export {}
 
-/**
- * @param {number} n
- * @return {boolean}
- */
-let canWinNim = function (n) {
+function canWinNim(n: number): boolean {
 
     return n % 4 !== 0;
-};
+}

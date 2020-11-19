@@ -20,31 +20,16 @@
  * Solution1
  * 二分法，小心 left+right 会溢出，所以选择稳妥的mid算法
  */
+export {}
 
-/**
- * @param {number} version number
- * @return {boolean} whether the version is bad
- */
-let isBadVersion = function (version) {
+let solution = function (isBadVersion: any) {
 
-    return version === 4 || version === 5;
-};
+    return function (n: number): number {
 
-/**
- * @param {function} isBadVersion()
- * @return {function}
- */
-let solution = function (isBadVersion) {
-    /**
-     * @param {number} n Total versions
-     * @return {number} The first bad version
-     */
-    return function (n) {
-
-        let left = 1;
-        let right = n;
+        let left: number = 1;
+        let right: number = n;
         while (left < right) {
-            let mid = left + Math.floor((right - left) / 2);
+            let mid: number = left + Math.floor((right - left) / 2);
             if (!isBadVersion(mid)) {
                 left = mid + 1;
             } else {
@@ -54,3 +39,8 @@ let solution = function (isBadVersion) {
         return left;
     };
 };
+
+function isBadVersion(version: number): boolean {
+
+    return version === 4 || version === 5;
+}

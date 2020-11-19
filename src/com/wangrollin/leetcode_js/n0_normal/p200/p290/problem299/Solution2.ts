@@ -25,19 +25,15 @@
  * Solution2
  * 猜对数字但是没猜对位置的数量cow = min(某个数字在secret的数量，某个数字在guess的数量)
  */
+export {}
 
-/**
- * @param {string} secret
- * @param {string} guess
- * @return {string}
- */
-let getHint = function (secret, guess) {
+function getHint(secret: string, guess: string): string {
 
-    let secretBucket = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let guessBucket = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let secretBucket: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let guessBucket: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    let bull = 0;
-    for (let i = 0; i < secret.length; i++) {
+    let bull: number = 0;
+    for (let i: number = 0; i < secret.length; i++) {
         if (secret.charAt(i) === guess.charAt(i)) {
             ++bull;
         } else {
@@ -45,9 +41,9 @@ let getHint = function (secret, guess) {
             ++guessBucket[guess.charCodeAt(i) - '0'.charCodeAt(0)];
         }
     }
-    let cow = 0;
-    for (let i = 0; i < 10; i++) {
+    let cow: number = 0;
+    for (let i: number = 0; i < 10; i++) {
         cow += Math.min(secretBucket[i], guessBucket[i]);
     }
     return bull + "A" + cow + "B";
-};
+}

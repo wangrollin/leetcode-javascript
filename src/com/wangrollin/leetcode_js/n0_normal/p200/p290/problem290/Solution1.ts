@@ -29,27 +29,23 @@
  * Solution1
  * 一个map，一个set
  */
+export {}
 
-/**
- * @param {string} pattern
- * @param {string} s
- * @return {boolean}
- */
-let wordPattern = function (pattern, s) {
+function wordPattern(pattern: string, s: string): boolean {
 
-    let patternLen = pattern == null ? 0 : pattern.length;
-    let wordListLen = s == null ? 0 : s.split(" ").length;
+    let patternLen: number = pattern == null ? 0 : pattern.length;
+    let wordListLen: number = s == null ? 0 : s.split(" ").length;
     if (patternLen !== wordListLen) {
         return false;
     }
     if (patternLen === 0 && wordListLen === 0) {
         return true;
     }
-    let wordList = s.split(" ");
-    let pMap = new Map();
-    let strSet = new Set();
-    for (let i = 0; i < pattern.length; i++) {
-        let ch = pattern[i];
+    let wordList: string[] = s.split(" ");
+    let pMap: Map<string, string> = new Map();
+    let strSet: Set<string> = new Set();
+    for (let i: number = 0; i < pattern.length; i++) {
+        let ch: string = pattern[i];
         if (pMap.has(ch)) {
             if (pMap.get(ch) !== wordList[i]) {
                 return false;
@@ -64,4 +60,4 @@ let wordPattern = function (pattern, s) {
         }
     }
     return true;
-};
+}
