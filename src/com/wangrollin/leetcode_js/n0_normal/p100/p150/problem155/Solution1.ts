@@ -19,9 +19,10 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/min-stack
  *
- * Solution2
- * 维护一个不同步的队列
+ * Solution1
+ * 维护一个相同的队列
  */
+export {}
 
 /**
  * Your MinStack object will be instantiated and called as such:
@@ -33,52 +34,36 @@
  */
 class MinStack {
 
-    /**
-     * initialize your data structure here.
-     */
+    private stack: Array<number> = [];
+    private minValueStack: Array<number> = [];
+
     constructor() {
-        this.stack = [];
-        this.minValueStack = [];
+
     }
 
-    /**
-     * @param {number} x
-     * @return {void}
-     */
-    push(x) {
-
+    push(x: number): void {
         if (this.minValueStack.length === 0) {
             this.stack.push(x);
             this.minValueStack.push(x);
         } else {
             this.stack.push(x);
-            if (x <= this.minValueStack[this.minValueStack.length - 1]) {
-                this.minValueStack.push(x);
-            }
+            this.minValueStack.push(Math.min(x, this.minValueStack[this.minValueStack.length - 1]));
         }
     }
 
-    /**
-     * @return {void}
-     */
-    pop() {
-        let value = this.stack.pop();
-        if (value === this.minValueStack[this.minValueStack.length - 1]) {
-            this.minValueStack.pop();
-        }
+    pop(): void {
+        this.stack.pop();
+        this.minValueStack.pop();
     }
 
-    /**
-     * @return {number}
-     */
-    top() {
+    top(): number {
         return this.stack[this.stack.length - 1];
     }
 
-    /**
-     * @return {number}
-     */
-    getMin() {
+    getMin(): number {
         return this.minValueStack[this.minValueStack.length - 1];
     }
 }
+
+
+

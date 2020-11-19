@@ -30,17 +30,14 @@
  * Solution1
  * 本质上是一个进制转换问题，26进制，但是要注意没有A0被AZ表示了
  */
+export {}
 
-/**
- * @param {number} n
- * @return {string}
- */
-let convertToTitle = function (n) {
+function convertToTitle(n: number): string {
 
-    let result = [];
+    let result: Array<string> = [];
     while (n !== 0) {
         result.push(String.fromCharCode((n - 1) % 26 + 'A'.charCodeAt(0)));
         n = Math.floor((n - 1) / 26);
     }
     return result.reverse().join("");
-};
+}

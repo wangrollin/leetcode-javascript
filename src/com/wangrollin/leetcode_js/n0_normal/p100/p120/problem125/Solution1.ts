@@ -17,19 +17,16 @@
  * Solution1
  * 遍历一遍
  */
+export {}
 
-/**
- * @param {string} s
- * @return {boolean}
- */
-let isPalindrome = function (s) {
+function isPalindrome(s: string): boolean {
 
     if (s == null || s === "") {
         return true;
     }
 
-    let left = 0;
-    let right = s.length - 1;
+    let left: number = 0;
+    let right: number = s.length - 1;
     while (left <= right) {
 
         if (!/^\d+$/.test(s[left]) && !/^[a-z]$/i.test(s[left])) {
@@ -48,4 +45,4 @@ let isPalindrome = function (s) {
         }
     }
     return true;
-};
+}

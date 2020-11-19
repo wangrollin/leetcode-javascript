@@ -33,16 +33,13 @@
  * Solution1
  * Integer.toBinaryString
  */
+export {}
 
-/**
- * @param {number} n - a positive integer
- * @return {number}
- */
-let hammingWeight = function (n) {
+function hammingWeight(n: number): number {
 
     return n
         .toString(2)
         .split("")
         .filter(ch => ch === "1")
         .length;
-};
+}

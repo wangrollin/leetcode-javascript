@@ -31,20 +31,17 @@
  * Solution1
  * 进制转换问题
  */
+export {}
 
-/**
- * @param {string} s
- * @return {number}
- */
-let titleToNumber = function (s) {
+function titleToNumber(s: string): number {
 
-    let result = 0;
-    for (let i = 0; i < s.length; i++) {
-        let tmp = s.charCodeAt(i) - 64;
-        for (let j = 0; j < s.length - 1 - i; j++) {
+    let result: number = 0;
+    for (let i: number = 0; i < s.length; i++) {
+        let tmp: number = s.charCodeAt(i) - 64;
+        for (let j: number = 0; j < s.length - 1 - i; j++) {
             tmp *= 26;
         }
         result += tmp;
     }
     return result;
-};
+}

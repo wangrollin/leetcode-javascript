@@ -21,17 +21,14 @@
  * Solution1
  * 0的个数和5的个数一样,但不能暴力求5，否则会超时，31! = [1*5,2*5,3*5,4*5,5*5,6*5],1+1+1+1+2+1
  */
+export {}
 
-/**
- * @param {number} n
- * @return {number}
- */
-let trailingZeroes = function (n) {
+function trailingZeroes(n: number): number {
 
-    let result = 0;
+    let result: number = 0;
     while (n >= 5) {
         result += Math.floor(n / 5);
         n = Math.floor(n / 5);
     }
     return result;
-};
+}
