@@ -16,27 +16,14 @@
  * Solution1
  * 遍历一遍就行了
  */
-
-class ListNode {
-
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-    }
-}
-
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-let deleteDuplicates = function (head) {
+function deleteDuplicates(head: ListNode | null): ListNode | null {
 
     if (head == null) {
         return null;
     }
 
-    let validNode = head;
-    for (let curNode = head.next; curNode != null; curNode = curNode.next) {
+    let validNode = head!;
+    for (let curNode: ListNode = head.next!; curNode != null; curNode = curNode.next!) {
         if (validNode.val !== curNode.val) {
             validNode.next = curNode;
             validNode = curNode;
@@ -44,4 +31,15 @@ let deleteDuplicates = function (head) {
     }
     validNode.next = null;
     return head;
-};
+}
+
+class ListNode {
+
+    val: number
+    next: ListNode | null
+
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.next = (next === undefined ? null : next)
+    }
+}

@@ -20,33 +20,22 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-let maxDepth = function (root) {
+function maxDepth(root: TreeNode | null): number {
 
     if (root == null) {
         return 0;
     }
 
-    let queue = [];
+    let queue: Array<TreeNode | null> = [];
     queue.push(root);
-    let depth = 0;
+    let depth: number = 0;
 
     while (queue.length !== 0) {
-        let size = queue.length;
+        let size: number = queue.length;
         while (size > 0) {
-            let node = queue.shift();
+            let node: TreeNode = queue.shift()!;
             if (node.left != null) {
                 queue.push(node.left);
             }
@@ -59,4 +48,17 @@ let maxDepth = function (root) {
     }
 
     return depth;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

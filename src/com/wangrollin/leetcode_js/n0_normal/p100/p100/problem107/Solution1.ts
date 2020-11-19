@@ -23,36 +23,25 @@
  * Solution1
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
+function levelOrderBottom(root: TreeNode | null): number[][] {
 
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {number[][]}
- */
-let levelOrderBottom = function (root) {
-
-    let result = [];
+    let result: Array<Array<number>> = [];
     if (root == null) {
         return result;
     }
 
-    let queue = [];
+    let queue: Array<TreeNode | null> = [];
     queue.push(root);
 
     while (queue.length !== 0) {
 
-        let list = [];
-        let size = queue.length;
+        let list: Array<number> = [];
+        let size: number = queue.length;
 
         while (size > 0) {
-            let node = queue.shift();
+            let node: TreeNode = queue.shift()!;
             list.push(node.val);
             if (node.left != null) {
                 queue.push(node.left);
@@ -67,4 +56,17 @@ let levelOrderBottom = function (root) {
     }
 
     return result.reverse();
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

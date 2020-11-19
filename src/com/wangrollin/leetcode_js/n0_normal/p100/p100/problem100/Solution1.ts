@@ -34,22 +34,9 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+export {}
 
-class TreeNode {
-
-    constructor(val, left, right) {
-        this.val = (val===undefined ? 0 : val);
-        this.left = (left===undefined ? null : left);
-        this.right = (right===undefined ? null : right);
-    }
-}
-
-/**
- * @param {TreeNode} p
- * @param {TreeNode} q
- * @return {boolean}
- */
-let isSameTree = function (p, q) {
+function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 
     if (p == null && q == null) {
         return true;
@@ -58,4 +45,17 @@ let isSameTree = function (p, q) {
     } else {
         return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

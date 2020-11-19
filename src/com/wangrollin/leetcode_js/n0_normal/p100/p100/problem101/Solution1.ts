@@ -26,40 +26,37 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
-let isSymmetric = function (root) {
+function isSymmetric(root: TreeNode | null): boolean {
 
     if (root == null) {
         return true;
     }
-    return checkLeftAndRight(root.left, root.right);
-};
+    return checkLeftAndRight(root.left!, root.right!);
+}
 
-/**
- * @param {TreeNode} left
- * @param {TreeNode} right
- * @return {boolean}
- */
-let checkLeftAndRight = function (left, right) {
+function checkLeftAndRight(left: TreeNode, right: TreeNode): boolean {
 
     if (left == null && right == null) {
         return true;
     } else if (left == null || right == null || left.val !== right.val) {
         return false;
     } else {
-        return checkLeftAndRight(left.left, right.right)
-            && checkLeftAndRight(left.right, right.left);
+        return checkLeftAndRight(left.left!, right.right!)
+            && checkLeftAndRight(left.right!, right.left!);
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

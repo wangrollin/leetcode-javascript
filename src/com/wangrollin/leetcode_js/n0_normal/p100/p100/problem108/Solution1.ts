@@ -19,45 +19,40 @@
  * Solution1
  * 递归创建node
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {number[]} nums
- * @return {TreeNode}
- */
-let sortedArrayToBST = function (nums) {
-
+function sortedArrayToBST(nums: number[]): TreeNode | null {
     if (nums == null || nums.length == 0) {
         return null;
     }
 
     return createNode(nums, 0, nums.length - 1);
-};
+}
 
-/**
- * @param {number[]} nums
- * @param {number} left
- * @param {number} right
- * @returns {TreeNode|null}
- */
-let createNode = function (nums, left, right) {
+function createNode(nums: number[], left: number, right: number) {
 
     if (left > right) {
         return null;
     } else if (left === right) {
         return new TreeNode(nums[left]);
     } else {
-        let mid = left + Math.floor((right - left) / 2);
-        let node = new TreeNode(nums[mid]);
+        let mid: number = left + Math.floor((right - left) / 2);
+        let node: TreeNode = new TreeNode(nums[mid]);
         node.left = createNode(nums, left, mid - 1);
         node.right = createNode(nums, mid + 1, right);
         return node;
+    }
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
     }
 }

@@ -34,44 +34,44 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
+function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 
-    constructor(val, left, right) {
-        this.val = (val===undefined ? 0 : val);
-        this.left = (left===undefined ? null : left);
-        this.right = (right===undefined ? null : right);
-    }
-}
-
-/**
- * @param {TreeNode} p
- * @param {TreeNode} q
- * @return {boolean}
- */
-let isSameTree = function (p, q) {
-
-    let queue1 = [];
-    queue1.unshift(p);
-    let queue2 = [];
-    queue2.unshift(q);
+    let queue1: Array<TreeNode> = [];
+    queue1.unshift(p!);
+    let queue2: Array<TreeNode> = [];
+    queue2.unshift(q!);
 
     while (queue1.length !== 0 && queue2.length !== 0) {
 
-        let node1 = queue1.pop();
-        let node2 = queue2.pop();
+        let node1: TreeNode = queue1.pop()!;
+        let node2: TreeNode = queue2.pop()!;
 
         if (node1 == null && node2 == null) {
             continue;
         } else if (node1 == null || node2 == null || node1.val !== node2.val) {
             return false;
         } else {
-            queue1.unshift(node1.left);
-            queue1.unshift(node1.right);
-            queue2.unshift(node2.left);
-            queue2.unshift(node2.right);
+            queue1.unshift(node1.left!);
+            queue1.unshift(node1.right!);
+            queue2.unshift(node2.left!);
+            queue2.unshift(node2.right!);
         }
     }
 
     return true;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

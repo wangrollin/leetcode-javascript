@@ -23,46 +23,48 @@
  * Solution1
  * 层序遍历
  */
+export {}
 
-class TreeNode {
+function levelOrder(root: TreeNode | null): number[][] {
 
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {number[][]}
- */
-let levelOrder = function (root) {
-
-    let result = [];
+    let result: Array<Array<number>> = [];
 
     if (root == null) {
         return result;
     }
 
-    let queue = [];
-    queue.push(root);
+    let queue: Array<TreeNode> = [];
+    queue.push(root!);
 
     while (queue.length !== 0) {
 
         result.push(queue.map(treeNode => treeNode.val));
 
-        let size = queue.length;
+        let size: number = queue.length;
         while (size > 0) {
-            let node = queue.shift();
+            let node: TreeNode = queue.shift()!;
             if (node.left != null) {
-                queue.push(node.left);
+                queue.push(node.left!);
             }
             if (node.right != null) {
-                queue.push(node.right);
+                queue.push(node.right!);
             }
             size--;
         }
     }
 
     return result;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

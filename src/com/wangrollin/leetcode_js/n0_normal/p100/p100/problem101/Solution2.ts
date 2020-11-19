@@ -26,55 +26,52 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
-let isSymmetric = function (root) {
+function isSymmetric(root: TreeNode | null): boolean {
 
     if (root == null) {
         return true;
     }
-    return checkLeftAndRight(root.left, root.right);
-};
+    return checkLeftAndRight(root.left!, root.right!);
+}
 
-/**
- * @param {TreeNode} left
- * @param {TreeNode} right
- * @return {boolean}
- */
-let checkLeftAndRight = function (left, right) {
+function checkLeftAndRight(left: TreeNode, right: TreeNode): boolean {
 
-    let queue1 = [];
+    let queue1: Array<TreeNode> = [];
     queue1.unshift(left);
-    let queue2 = [];
+    let queue2: Array<TreeNode> = [];
     queue2.unshift(right);
 
     while (queue1.length !== 0 && queue2.length !== 0) {
 
-        let node1 = queue1.pop();
-        let node2 = queue2.pop();
+        let node1: TreeNode = queue1.pop()!;
+        let node2: TreeNode = queue2.pop()!;
 
         if (node1 == null && node2 == null) {
             continue;
         } else if (node1 == null || node2 == null || node1.val !== node2.val) {
             return false;
         } else {
-            queue1.unshift(node1.left);
-            queue1.unshift(node1.right);
-            queue2.unshift(node2.right);
-            queue2.unshift(node2.left);
+            queue1.unshift(node1.left!);
+            queue1.unshift(node1.right!);
+            queue2.unshift(node2.right!);
+            queue2.unshift(node2.left!);
         }
     }
 
     return true;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}
