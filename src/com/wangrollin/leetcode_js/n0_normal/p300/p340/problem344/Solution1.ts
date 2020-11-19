@@ -19,19 +19,19 @@
  * Solution1
  * 双指针相向而行
  */
+export {}
 
 /**
- * @param {string[]} s
- * @return {void} Do not return anything, modify s in-place instead.
+ Do not return anything, modify s in-place instead.
  */
-let reverseString = function (s) {
+function reverseString(s: string[]): void {
 
     if (s == null || s.length <= 1) {
         return;
     }
-    for (let left = 0, right = s.length - 1; left < right; left++, right--) {
-        let tmp = s[left];
+    for (let left: number = 0, right = s.length - 1; left < right; left++, right--) {
+        let tmp: string = s[left];
         s[left] = s[right];
         s[right] = tmp;
     }
-};
+}

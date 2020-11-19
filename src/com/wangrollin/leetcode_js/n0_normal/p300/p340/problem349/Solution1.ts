@@ -21,15 +21,11 @@
  * Solution1
  * 用set操作
  */
+export {}
 
-/**
- * @param {number[]} nums1
- * @param {number[]} nums2
- * @return {number[]}
- */
-let intersection = function (nums1, nums2) {
+function intersection(nums1: number[], nums2: number[]): number[] {
 
     nums1 = [...new Set(nums1)];
-    let set2 = new Set(nums2);
+    let set2: Set<number> = new Set(nums2);
     return nums1.filter(i => set2.has(i));
-};
+}

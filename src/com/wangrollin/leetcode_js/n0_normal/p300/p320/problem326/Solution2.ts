@@ -25,18 +25,18 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/power-of-three
  *
- * Solution3
- * 数学公式推导，n=3的i次方，i=log3(n), i=logn/log3, 看i是否是整数
- * (Math.log(n) / Math.log(3) + epsilon) % 1 <= 2 * epsilon;
- *
- * 转换成3进制，如果符合条件，则会匹配上
+ * Solution2
+ * 不断除下去
  */
+export {}
 
-/**
- * @param {number} n
- * @return {boolean}
- */
-let isPowerOfThree = function (n) {
+function isPowerOfThree(n: number): boolean {
 
-    return /^10*$/.test(n.toString(3));
-};
+    if (n < 1) {
+        return false;
+    }
+    while (n % 3 === 0) {
+        n = Math.floor(n / 3);
+    }
+    return n === 1;
+}

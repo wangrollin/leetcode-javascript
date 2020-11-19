@@ -20,21 +20,17 @@
  * Solution1
  * int[26]，先加上去，再减下来，-1是要找的
  */
+export {}
 
-/**
- * @param {string} s
- * @param {string} t
- * @return {string}
- */
-let findTheDifference = function (s, t) {
+function findTheDifference(s: string, t: string): string {
 
-    let charCount = new Array(26).fill(0);
+    let charCount: number[] = new Array(26).fill(0);
     s.split("").forEach(x => charCount[x.charCodeAt(0) - "a".charCodeAt(0)]++);
-    for (let i = 0; i < t.length; i++) {
-        let c = t[i];
+    for (let i: number = 0; i < t.length; i++) {
+        let c: string = t[i];
         if (--charCount[c.charCodeAt(0) - "a".charCodeAt(0)] === -1) {
             return c;
         }
     }
     return " ";
-};
+}

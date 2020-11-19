@@ -18,25 +18,22 @@
  * Solution1
  * 遍历一遍，计数，再去一个一个看谁只有一个
  */
+export {}
 
-/**
- * @param {string} s
- * @return {number}
- */
-let firstUniqChar = function (s) {
+function firstUniqChar(s: string): number {
 
-    let counter = new Map();
+    let counter: Map<string, number> = new Map();
     s.split("").forEach(x => {
         if (counter.has(x)) {
-            counter.set(x, counter.get(x) + 1);
+            counter.set(x, counter.get(x)! + 1);
         } else {
             counter.set(x, 1);
         }
     });
-    for (let i = 0; i < s.length; i++) {
+    for (let i: number = 0; i < s.length; i++) {
         if (counter.get(s[i]) === 1) {
             return i;
         }
     }
     return -1;
-};
+}

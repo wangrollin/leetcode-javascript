@@ -24,22 +24,18 @@
  * Solution1
  * from index，去找吧
  */
+export {}
 
-/**
- * @param {string} s
- * @param {string} t
- * @return {boolean}
- */
-let isSubsequence = function (s, t) {
+function isSubsequence(s: string, t: string): boolean {
 
     if (t.length < s.length) {
         return false;
     }
-    for (let i = 0, fromIndex = 0; i < s.length; i++) {
+    for (let i: number = 0, fromIndex = 0; i < s.length; i++) {
         fromIndex = t.indexOf(s[i], fromIndex) + 1;
         if (fromIndex === 0) {
             return false;
         }
     }
     return true;
-};
+}

@@ -23,18 +23,15 @@
  * logn/log2是否为偶数
  * 不断除下去
  */
+export {}
 
-/**
- * @param {number} num
- * @return {boolean}
- */
-let isPowerOfFour = function (num) {
+function isPowerOfFour(n: number): boolean {
 
-    if (num < 1) {
+    if (n < 1) {
         return false;
     }
-    while (num % 4 === 0) {
-        num = Math.floor(num / 4);
+    while (n % 4 === 0) {
+        n = Math.floor(n / 4);
     }
-    return num === 1;
-};
+    return n === 1;
+}

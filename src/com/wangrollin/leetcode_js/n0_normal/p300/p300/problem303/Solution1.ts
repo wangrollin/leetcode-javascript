@@ -21,6 +21,7 @@
  * 2.做缓存，在初始化的时候，把n*n中可能的ij组合的结果都计算出来
  * 3.做缓存，在初始化的时候，把所有从0到i的和都计算出来，然后返回sum[j] - sum[i-1]
  */
+export {}
 
 /**
  * Your NumArray object will be instantiated and called as such:
@@ -29,13 +30,12 @@
  */
 class NumArray {
 
-    /**
-     * @param {number[]} nums
-     */
-    constructor(nums) {
+    private readonly sums: number[];
+
+    constructor(nums: number[]) {
 
         this.sums = new Array(nums.length);
-        for (let i = 0; i < nums.length; i++) {
+        for (let i: number = 0; i < nums.length; i++) {
             if (i === 0) {
                 this.sums[0] = nums[0];
             } else {
@@ -44,12 +44,7 @@ class NumArray {
         }
     }
 
-    /**
-     * @param {number} i
-     * @param {number} j
-     * @return {number}
-     */
-    sumRange(i, j) {
+    sumRange(i: number, j: number): number {
 
         if (i === 0) {
             return this.sums[j];

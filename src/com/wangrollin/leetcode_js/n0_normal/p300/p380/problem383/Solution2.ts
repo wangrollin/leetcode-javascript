@@ -15,28 +15,24 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/ransom-note
  *
- * Solution1
- * 用26长度的数组加加减减
+ * Solution2
+ * 记录每个字符的当前可用位置
  */
+export {}
 
-/**
- * @param {string} ransomNote
- * @param {string} magazine
- * @return {boolean}
- */
-let canConstruct = function (ransomNote, magazine) {
+function canConstruct(ransomNote: string, magazine: string): boolean {
 
     if (ransomNote.length > magazine.length) {
         return false;
     }
-    let chars = new Array(26);
-    chars.fill(0);
-    ransomNote
-        .split("")
-        .forEach(x => --chars[x.charCodeAt(0) - 'a'.charCodeAt(0)]);
-    magazine
-        .split("")
-        .forEach(x => ++chars[x.charCodeAt(0) - 'a'.charCodeAt(0)]);
-
-    return Math.min(...chars) >= 0;
-};
+    let chars: number[] = new Array(26);
+    for (let i: number = 0; i < ransomNote.length; i++) {
+        let c: string = ransomNote[i];
+        let index: number = magazine.indexOf(c, chars[c.charCodeAt(0) - 'a'.charCodeAt(0)]);
+        if (index === -1) {
+            return false;
+        }
+        chars[c.charCodeAt(0) - 'a'.charCodeAt(0)] = index + 1;
+    }
+    return true;
+}

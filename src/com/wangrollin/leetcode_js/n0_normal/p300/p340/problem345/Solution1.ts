@@ -20,19 +20,16 @@
  * Solution1
  * 双指针相向而行
  */
+export {}
 
-/**
- * @param {string} s
- * @return {string}
- */
-let reverseVowels = function (s) {
+function reverseVowels(s: string): string {
 
     if (s == null || s.length <= 1) {
         return s;
     }
-    let chars = s.split("");
-    let univocalicSet = new Set(['a', 'o', 'e', 'i', 'u', 'A', 'O', 'E', 'I', 'U']);
-    for (let left = 0, right = s.length - 1; left < right;) {
+    let chars: string[] = s.split("");
+    let univocalicSet: Set<string> = new Set(['a', 'o', 'e', 'i', 'u', 'A', 'O', 'E', 'I', 'U']);
+    for (let left: number = 0, right = s.length - 1; left < right;) {
         if (!univocalicSet.has(chars[left])) {
             left++;
             continue;
@@ -41,11 +38,11 @@ let reverseVowels = function (s) {
             right--;
             continue;
         }
-        let tmp = chars[left];
+        let tmp: string = chars[left];
         chars[left] = chars[right];
         chars[right] = tmp;
         left++;
         right--;
     }
     return chars.join("");
-};
+}

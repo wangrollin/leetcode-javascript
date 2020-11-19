@@ -25,21 +25,12 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/power-of-three
  *
- * Solution2
- * 不断除下去
+ * Solution1
+ * int范围内3的幂的最大值是1162261467
  */
+export {}
 
-/**
- * @param {number} n
- * @return {boolean}
- */
-let isPowerOfThree = function (n) {
+function isPowerOfThree(n: number): boolean {
 
-    if (n < 1) {
-        return false;
-    }
-    while (n % 3 === 0) {
-        n = Math.floor(n / 3);
-    }
-    return n === 1;
-};
+    return n > 0 && 1162261467 % n === 0;
+}

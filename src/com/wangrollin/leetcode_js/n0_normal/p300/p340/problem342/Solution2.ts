@@ -20,34 +20,27 @@
  * Solution2
  * int范围内的结果只有那几种，计算出来就可以了
  */
+export {}
 
-/**
- * @param {number} num
- * @return {boolean}
- */
-let isPowerOfFour = function (num) {
+function isPowerOfFour(n: number): boolean {
 
-    return PreparedClass.isPowerOfFour(num);
-};
+    return PreparedClass.isPowerOfFour(n);
+}
 
 class PreparedClass {
 
-    static set = new Set();
+    private static set: Set<number> = new Set();
 
-    static #init = (() => {
+    private static init: void = (() => {
 
         PreparedClass.set.add(1);
-        let tmp = 1;
-        for (let i = 0; i < 15; i++) {
+        let tmp: number = 1;
+        for (let i: number = 0; i < 15; i++) {
             PreparedClass.set.add(tmp *= 4);
         }
     })();
 
-    /**
-     * @param {number} num
-     * @returns {boolean}
-     */
-    static isPowerOfFour(num) {
+    static isPowerOfFour(num: number): boolean {
         return PreparedClass.set.has(num);
     }
 }

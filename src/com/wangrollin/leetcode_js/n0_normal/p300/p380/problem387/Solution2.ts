@@ -18,17 +18,14 @@
  * Solution2
  * 记录字符的位置，然后去找只有一个的，然后找到最小的那个
  */
+export {}
 
-/**
- * @param {string} s
- * @return {number}
- */
-let firstUniqChar = function (s) {
+function firstUniqChar(s: string): number {
 
-    let indexMap = new Map();
-    for (let i = 0; i < s.length; i++) {
+    let indexMap: Map<string, number[]> = new Map();
+    for (let i: number = 0; i < s.length; i++) {
         if (indexMap.has(s[i])) {
-            indexMap.get(s[i]).push(i);
+            indexMap.get(s[i])!.push(i);
         } else {
             indexMap.set(s[i], [i]);
         }
@@ -44,4 +41,4 @@ let firstUniqChar = function (s) {
     } else {
         return -1;
     }
-};
+}

@@ -17,17 +17,15 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/power-of-four
  *
- * Solution3
+ * Solution4
  * 位操作：如果 num 是否为 2 的幂，则 x > 0 and x & (x - 1) == 0
- * 如果是4的幂，则其二进制为[^1(00)*$]
- * 和1010...1010进行与操作会得到0
+ * num = 2pow(a), a=2k+1, a=2k
+ * num%3=2pow(2k+1)%3=2*4pow(k)%3=2*(3+1)pow(k)%3=2
+ * num%3=2pow(2k)%3=4pow(k)%3=(3+1)pow(k)%3=1
  */
+export {}
 
-/**
- * @param {number} num
- * @return {boolean}
- */
-let isPowerOfFour = function (num) {
+function isPowerOfFour(n: number): boolean {
 
-    return (num > 0) && ((num & (num - 1)) === 0) && ((num & 0xaaaaaaaa) === 0);
-};
+    return (n > 0) && ((n & (n - 1)) === 0) && (n % 3 === 1);
+}
