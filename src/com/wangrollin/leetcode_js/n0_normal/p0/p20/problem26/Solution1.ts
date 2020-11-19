@@ -20,24 +20,19 @@
  * Solution1
  * 两个指针遍历一遍即可
  */
-
-/**
- * @param {number[]} nums
- * @return {number}
- */
-let removeDuplicates = function (nums) {
+function removeDuplicates(nums: number[]): number {
 
     if (nums == null || nums.length === 0) {
         return 0;
     }
 
-    let len = nums.length;
-    let rltIndex = 0;
+    let len: number = nums.length;
+    let rltIndex: number = 0;
 
-    for (let i = 0; i < nums.length; ++i) {
+    for (let i: number = 0; i < nums.length; ++i) {
         if (nums[i] !== nums[rltIndex]) {
             nums[++rltIndex] = nums[i];
         }
     }
     return rltIndex + 1;
-};
+}

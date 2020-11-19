@@ -22,25 +22,19 @@
  * Solution1
  * 双指针遍历一遍，赋值次数等于保留的数字
  */
-
-/**
- * @param {number[]} nums
- * @param {number} val
- * @return {number}
- */
-let removeElement = function (nums, val) {
+function removeElement(nums: number[], val: number): number {
 
     if (nums == null || nums.length === 0) {
         return 0;
     }
 
-    let len = nums.length;
-    let validIndex = 0;
+    let len: number = nums.length;
+    let validIndex: number = 0;
 
-    for (let i = 0; i < len; ++i) {
+    for (let i: number = 0; i < len; ++i) {
         if (nums[i] !== val) {
             nums[validIndex++] = nums[i];
         }
     }
     return validIndex;
-};
+}

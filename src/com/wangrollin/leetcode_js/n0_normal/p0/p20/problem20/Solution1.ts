@@ -33,35 +33,21 @@
  * Solution1
  * 用栈来匹配，提前终止的条件：长度为奇数、栈的高度大于长度的一半
  */
-
-/**
- * @param {string} a
- * @param {string} b
- */
-let isAPair = function (a, b) {
-
-    return (a === '(' && b === ')') || (a === '[' && b === ']') || (a === '{' && b === '}');
-};
-
-/**
- * @param {string} s
- * @return {boolean}
- */
-let isValid = function (s) {
+function isValid(s: string): boolean {
 
     if (s == null || s === "") {
         return true;
     }
 
-    let len = s.length;
+    let len: number = s.length;
     if (len % 2 === 1) {
         return false;
     }
 
-    let maxStackSize = Math.floor(len / 2);
-    let stack = [];
+    let maxStackSize: number = Math.floor(len / 2);
+    let stack: Array<string> = [];
 
-    for (let i = 0; i < len; i++) {
+    for (let i: number = 0; i < len; i++) {
         if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
             if (stack.length === maxStackSize) {
                 return false;
@@ -75,4 +61,9 @@ let isValid = function (s) {
         }
     }
     return stack.length === 0;
-};
+}
+
+function isAPair(a: string | undefined, b: string): boolean {
+
+    return (a === '(' && b === ')') || (a === '[' && b === ']') || (a === '{' && b === '}');
+}

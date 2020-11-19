@@ -22,20 +22,14 @@
  * Solution2
  * 单指针遍历一遍，赋值次数等于重复的数字；题目不要求剩下的元素的顺序
  */
-
-/**
- * @param {number[]} nums
- * @param {number} val
- * @return {number}
- */
-let removeElement = function (nums, val) {
+function removeElement2(nums: number[], val: number): number {
 
     if (nums == null || nums.length === 0) {
         return 0;
     }
 
-    let len = nums.length;
-    let validIndex = 0;
+    let len: number = nums.length;
+    let validIndex: number = 0;
 
     while (validIndex < len) {
         if (nums[validIndex] === val) {
@@ -45,4 +39,4 @@ let removeElement = function (nums, val) {
         }
     }
     return validIndex;
-};
+}
