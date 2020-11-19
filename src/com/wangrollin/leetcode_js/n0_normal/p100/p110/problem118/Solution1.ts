@@ -20,21 +20,18 @@
  * Solution1
  * 遍历一遍即可
  */
+export {}
 
-/**
- * @param {number} numRows
- * @return {number[][]}
- */
-let generate = function (numRows) {
+function generate(numRows: number): number[][] {
 
     if (numRows === 0) {
         return [];
     }
 
-    let result = [];
-    for (let i = 0; i < numRows; ++i) {
+    let result: Array<Array<number>> = [];
+    for (let i: number = 0; i < numRows; ++i) {
         result.push([]);
-        for (let j = 0; j < i + 1; ++j) {
+        for (let j: number = 0; j < i + 1; ++j) {
             if (j === 0 || j === i) {
                 result[i].push(1);
             } else {
@@ -43,4 +40,4 @@ let generate = function (numRows) {
         }
     }
     return result;
-};
+}

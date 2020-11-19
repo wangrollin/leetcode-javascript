@@ -24,49 +24,45 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @param {number} sum
- * @return {boolean}
- */
-let hasPathSum = function (root, sum) {
+function hasPathSum(root: TreeNode | null, sum: number): boolean {
 
     if (root == null) {
         return false;
     }
     return calSum(root, 0, sum);
-};
+}
 
-/**
- * @param {TreeNode} node
- * @param {number} curSum
- * @param {number} targetSum
- */
-let calSum = function (node, curSum, targetSum) {
+function calSum(node: TreeNode, curSum: number, targetSum: number): boolean {
 
     if (node.left == null && node.right == null) {
         return curSum + node.val === targetSum;
     } else {
-        let leftResult = false;
+        let leftResult: boolean = false;
         if (node.left != null) {
-            leftResult = calSum(node.left, curSum + node.val, targetSum);
+            leftResult = calSum(node.left!, curSum + node.val, targetSum);
         }
         if (leftResult) {
             return true;
         }
-        let rightResult = false;
+        let rightResult: boolean = false;
         if (node.right != null) {
-            rightResult = calSum(node.right, curSum + node.val, targetSum);
+            rightResult = calSum(node.right!, curSum + node.val, targetSum);
         }
         return rightResult;
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

@@ -31,21 +31,9 @@
  * Solution1
  * 深度优先遍历，DFS，自上而下递归，判断每个节点都是平衡的
  */
+export {}
 
-class TreeNode {
-
-    constructor(val, left, right) {
-        this.val = (val === undefined ? 0 : val);
-        this.left = (left === undefined ? null : left);
-        this.right = (right === undefined ? null : right);
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
-let isBalanced = function (root) {
+function isBalanced(root: TreeNode | null): boolean {
 
     if (root == null) {
         return true;
@@ -54,17 +42,26 @@ let isBalanced = function (root) {
             && isBalanced(root.left)
             && isBalanced(root.right);
     }
-};
+}
 
-/**
- * @param {TreeNode} node
- * @return {number}
- */
-let getHeight = function (node) {
+function getHeight(node: TreeNode | null): number {
 
     if (node == null) {
         return 0;
     } else {
         return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

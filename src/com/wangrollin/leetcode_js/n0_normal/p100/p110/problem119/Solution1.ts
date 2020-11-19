@@ -17,19 +17,16 @@
  * Solution1
  * 遍历的时候复用数组
  */
+export {}
 
-/**
- * @param {number} rowIndex
- * @return {number[]}
- */
-let getRow = function (rowIndex) {
+function getRow(rowIndex: number): number[] {
 
     rowIndex += 1;
-    let result = [];
-    for (let i = 0; i < rowIndex; ++i) {
-        let carry = 1;
-        let tmp;
-        for (let j = 0; j < i + 1; ++j) {
+    let result: Array<number> = [];
+    for (let i: number = 0; i < rowIndex; ++i) {
+        let carry: number = 1;
+        let tmp: number;
+        for (let j: number = 0; j < i + 1; ++j) {
             if (i === 0) {
                 result.push(1);
             } else if (j !== 0 && j !== i) {
@@ -42,4 +39,4 @@ let getRow = function (rowIndex) {
         }
     }
     return result;
-};
+}

@@ -24,37 +24,25 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @param {number} sum
- * @return {boolean}
- */
-let hasPathSum = function (root, sum) {
+function hasPathSum(root: TreeNode | null, sum: number): boolean {
 
     if (root == null) {
         return false;
     }
 
-    let nodeQueue = [];
+    let nodeQueue: Array<TreeNode | null> = [];
     nodeQueue.push(root);
-    let sumQueue = [];
+    let sumQueue: Array<number> = [];
     sumQueue.push(root.val);
 
     while (nodeQueue.length !== 0) {
 
-        let size = nodeQueue.length;
+        let size: number = nodeQueue.length;
         while (size > 0) {
-            let node = nodeQueue.shift();
-            let curSum = sumQueue.shift();
+            let node: TreeNode = nodeQueue.shift()!;
+            let curSum: number = sumQueue.shift()!;
             if (node.left == null && node.right == null && curSum === sum) {
                 return true;
             }
@@ -71,4 +59,17 @@ let hasPathSum = function (root, sum) {
     }
 
     return false;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

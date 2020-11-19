@@ -31,40 +31,24 @@
  * Solution2
  * 深度优先遍历，DFS，自下而上递归，判断每个节点都是平衡的
  */
+export {}
 
-class TreeNode {
-
-    constructor(val, left, right) {
-        this.val = (val === undefined ? 0 : val);
-        this.left = (left === undefined ? null : left);
-        this.right = (right === undefined ? null : right);
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
-let isBalanced = function (root) {
+function isBalanced(root: TreeNode | null): boolean {
 
     if (root == null) {
         return true;
     } else {
         return getHeight(root) !== -1;
     }
-};
+}
 
-/**
- * @param {TreeNode} node
- * @return {number}
- */
-let getHeight = function (node) {
+function getHeight(node: TreeNode | null): number {
 
     if (node == null) {
         return 0;
     } else {
-        let leftHeight = getHeight(node.left);
-        let rightHeight = getHeight(node.right);
+        let leftHeight: number = getHeight(node.left);
+        let rightHeight: number = getHeight(node.right);
         if (leftHeight === -1 || rightHeight === -1) {
             return -1;
         } else if (Math.abs(leftHeight - rightHeight) <= 1) {
@@ -73,4 +57,17 @@ let getHeight = function (node) {
             return -1;
         }
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

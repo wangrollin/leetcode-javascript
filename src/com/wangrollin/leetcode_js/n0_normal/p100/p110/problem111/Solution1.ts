@@ -20,21 +20,9 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+export {}
 
-class TreeNode {
-
-    constructor(val, left, right) {
-        this.val = (val === undefined ? 0 : val);
-        this.left = (left === undefined ? null : left);
-        this.right = (right === undefined ? null : right);
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-let minDepth = function (root) {
+function minDepth(root: TreeNode | null): number {
 
     if (root == null) {
         return 0;
@@ -45,4 +33,17 @@ let minDepth = function (root) {
     } else {
         return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}
