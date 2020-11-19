@@ -28,12 +28,9 @@
  * Solution1
  * 直接用数学方法计算出结果，并向下取整；感觉可能会遇到精确的问题
  */
+export {}
 
-/**
- * @param {number} n
- * @return {number}
- */
-let arrangeCoins = function (n) {
+function arrangeCoins(n: number): number {
 
     return Math.floor(Math.sqrt(2.0 * n + 0.25) - 0.5);
-};
+}

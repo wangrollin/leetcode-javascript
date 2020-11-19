@@ -25,17 +25,14 @@
  * Solution1
  * 平淡无奇if else
  */
+export {}
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-let thirdMax = function (nums) {
+function thirdMax(nums: number[]): number {
 
-    let maxCount = 0;
-    let max1 = 0;
-    let max2 = 0;
-    let max3 = 0;
+    let maxCount: number = 0;
+    let max1: number = 0;
+    let max2: number = 0;
+    let max3: number = 0;
 
     for (let num of nums) {
         switch (maxCount) {
@@ -84,4 +81,4 @@ let thirdMax = function (nums) {
     }
 
     return maxCount === 3 ? max3 : max1;
-};
+}

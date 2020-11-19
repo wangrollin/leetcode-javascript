@@ -17,20 +17,9 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-let sumOfLeftLeaves = function (root) {
+function sumOfLeftLeaves(root: TreeNode | null): number {
 
     if (root == null) {
         return 0;
@@ -40,4 +29,17 @@ let sumOfLeftLeaves = function (root) {
     } else {
         return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

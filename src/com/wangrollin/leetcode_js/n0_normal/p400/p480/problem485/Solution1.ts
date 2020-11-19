@@ -18,16 +18,13 @@
  * Solution1
  * 遍历并记录
  */
+export {}
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-let findMaxConsecutiveOnes = function (nums) {
+function findMaxConsecutiveOnes(nums: number[]): number {
 
-    let maxCount = 0;
-    let counting = false;
-    let curCount = 0;
+    let maxCount: number = 0;
+    let counting: boolean = false;
+    let curCount: number = 0;
     for (let num of nums) {
         if (num === 1) {
             if (counting) {
@@ -45,4 +42,4 @@ let findMaxConsecutiveOnes = function (nums) {
     maxCount = Math.max(maxCount, curCount);
 
     return maxCount;
-};
+}

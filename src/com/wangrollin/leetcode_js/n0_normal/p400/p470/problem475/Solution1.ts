@@ -27,21 +27,17 @@
  * Solution1
  * 这是一道复杂，但不难的题目；计算出每个最短的距离，然后取最大值
  */
+export {}
 
-/**
- * @param {number[]} houses
- * @param {number[]} heaters
- * @return {number}
- */
-let findRadius = function (houses, heaters) {
+function findRadius(houses: number[], heaters: number[]): number {
 
     houses.sort((a, b) => a - b);
     heaters.sort((a, b) => a - b);
 
-    let maxLen = 0;
-    let houseIndex = 0;
+    let maxLen: number = 0;
+    let houseIndex: number = 0;
 
-    let heaterIndex = 0;
+    let heaterIndex: number = 0;
     if (houses[houseIndex] <= heaters[heaterIndex]) {
         maxLen = heaters[heaterIndex] - houses[houseIndex];
         while (houseIndex < houses.length) {
@@ -75,4 +71,4 @@ let findRadius = function (houses, heaters) {
     }
 
     return maxLen;
-};
+}

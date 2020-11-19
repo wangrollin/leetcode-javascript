@@ -45,12 +45,9 @@
  * Solution1
  * 双指针记录
  */
+export {}
 
-/**
- * @param {string[]} chars
- * @return {number}
- */
-let compress = function (chars) {
+function compress(chars: string[]): number {
 
     if (chars == null) {
         return 0;
@@ -58,9 +55,9 @@ let compress = function (chars) {
         return 1;
     }
 
-    let result = 0;
-    let right = 1;
-    let count = 1;
+    let result: number = 0;
+    let right: number = 1;
+    let count: number = 1;
 
     while (right < chars.length) {
         if (chars[right] === chars[result]) {
@@ -70,7 +67,7 @@ let compress = function (chars) {
             if (count === 1) {
                 chars[++result] = chars[right];
             } else {
-                let countChars = count.toString().split("");
+                let countChars: string[] = count.toString().split("");
                 for (let c of countChars) {
                     chars[++result] = c;
                 }
@@ -82,11 +79,11 @@ let compress = function (chars) {
     }
 
     if (count !== 1) {
-        let countChars = count.toString().split("");
+        let countChars: string[] = count.toString().split("");
         for (let c of countChars) {
             chars[++result] = c;
         }
     }
 
     return ++result;
-};
+}

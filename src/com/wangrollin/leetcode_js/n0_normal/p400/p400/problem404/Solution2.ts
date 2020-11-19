@@ -17,32 +17,21 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-let sumOfLeftLeaves = function (root) {
+function sumOfLeftLeaves(root: TreeNode | null): number {
 
     if (root == null) {
         return 0;
     }
 
-    let result = 0;
-    let queue = [];
-    queue.push(root);
+    let result: number = 0;
+    let queue: TreeNode[] = [];
+    queue.push(root!);
 
     while (queue.length !== 0) {
 
-        let node = queue.shift();
+        let node: TreeNode = queue.shift()!;
         if (node.left != null) {
             if (node.left.left == null && node.left.right == null) {
                 result += node.left.val;
@@ -56,4 +45,17 @@ let sumOfLeftLeaves = function (root) {
     }
 
     return result;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

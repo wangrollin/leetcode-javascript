@@ -15,23 +15,19 @@
  * Solution1
  * 双指针大法
  */
+export {}
 
-/**
- * @param {string} num1
- * @param {string} num2
- * @return {string}
- */
-let addStrings = function (num1, num2) {
+function addStrings(num1: string, num2: string): string {
 
-    let result = [];
-    let i = num1.length - 1;
-    let j = num2.length - 1;
-    let carry = 0;
+    let result: number[] = [];
+    let i: number = num1.length - 1;
+    let j: number = num2.length - 1;
+    let carry: number = 0;
 
     while (i >= 0 || j >= 0) {
-        let n1 = i >= 0 ? num1.charCodeAt(i--) - '0'.charCodeAt(0) : 0;
-        let n2 = j >= 0 ? num2.charCodeAt(j--) - '0'.charCodeAt(0) : 0;
-        let sum = n1 + n2 + carry;
+        let n1: number = i >= 0 ? num1.charCodeAt(i--) - '0'.charCodeAt(0) : 0;
+        let n2: number = j >= 0 ? num2.charCodeAt(j--) - '0'.charCodeAt(0) : 0;
+        let sum: number = n1 + n2 + carry;
         carry = Math.floor(sum / 10);
         result.push(sum % 10);
     }
@@ -40,4 +36,4 @@ let addStrings = function (num1, num2) {
     }
 
     return result.reverse().join("");
-};
+}

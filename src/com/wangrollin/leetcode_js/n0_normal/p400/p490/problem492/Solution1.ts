@@ -26,16 +26,13 @@
  * Solution1
  * 开平方，不断下探找到正确的width
  */
+export {}
 
-/**
- * @param {number} area
- * @return {number[]}
- */
-let constructRectangle = function (area) {
+function constructRectangle(area: number): number[] {
 
-    let width = Math.floor(Math.sqrt(area));
+    let width: number = Math.floor(Math.sqrt(area));
     while (area % width !== 0) {
         width--;
     }
     return [Math.floor(area / width), width];
-};
+}
