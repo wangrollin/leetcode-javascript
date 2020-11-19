@@ -22,6 +22,8 @@
  * Solution1
  * 使用排序后的str作为key，存储list，最后汇总
  */
+export {}
+
 function groupAnagrams(strs: string[]): string[][] {
 
     let resultMap: Map<string, Array<string>> = new Map();

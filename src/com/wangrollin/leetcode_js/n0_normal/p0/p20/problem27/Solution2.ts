@@ -22,7 +22,9 @@
  * Solution2
  * 单指针遍历一遍，赋值次数等于重复的数字；题目不要求剩下的元素的顺序
  */
-function removeElement2(nums: number[], val: number): number {
+export {}
+
+function removeElement(nums: number[], val: number): number {
 
     if (nums == null || nums.length === 0) {
         return 0;

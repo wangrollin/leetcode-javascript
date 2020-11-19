@@ -22,6 +22,8 @@
  * Solution1
  * 双指针遍历一遍，赋值次数等于保留的数字
  */
+export {}
+
 function removeElement(nums: number[], val: number): number {
 
     if (nums == null || nums.length === 0) {

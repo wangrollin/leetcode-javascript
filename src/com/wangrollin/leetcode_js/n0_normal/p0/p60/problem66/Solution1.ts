@@ -20,20 +20,15 @@
  * Solution1
  * 倒着遍历一下
  */
+function plusOne(digits: number[]): number[] {
 
-/**
- * @param {number[]} digits
- * @return {number[]}
- */
-let plusOne = function (digits) {
-
-    for (let i = digits.length - 1; i >= 0; --i) {
+    for (let i: number = digits.length - 1; i >= 0; --i) {
         ++digits[i];
         if ((digits[i] %= 10) !== 0) {
             return digits;
         }
     }
-    digits = new Array(digits.length + 1).fill(0);
+    digits = new Array<number>(digits.length + 1).fill(0);
     digits[0] = 1;
     return digits;
-};
+}

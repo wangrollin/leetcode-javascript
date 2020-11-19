@@ -13,18 +13,9 @@
  * Solution1
  * 太简单了，合并就行了
  */
+export {}
 
-function ListNode(val, next) {
-    this.val = (val === undefined ? 0 : val);
-    this.next = (next === undefined ? null : next);
-}
-
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
-let mergeTwoLists = function (l1, l2) {
+function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | null {
 
     if (l1 == null) {
         return l2;
@@ -33,10 +24,10 @@ let mergeTwoLists = function (l1, l2) {
         return l1;
     }
 
-    let result = new ListNode(0);
-    let curRlt = result;
-    let curIndex1 = l1;
-    let curIndex2 = l2;
+    let result: ListNode = new ListNode(0);
+    let curRlt: ListNode = result;
+    let curIndex1 = l1!;
+    let curIndex2 = l2!;
 
     while (true) {
 
@@ -52,12 +43,23 @@ let mergeTwoLists = function (l1, l2) {
 
         if (curIndex1.val <= curIndex2.val) {
             curRlt.next = curIndex1;
-            curRlt = curRlt.next;
-            curIndex1 = curIndex1.next;
+            curRlt = curRlt.next!;
+            curIndex1 = curIndex1.next!;
         } else {
             curRlt.next = curIndex2;
-            curRlt = curRlt.next;
-            curIndex2 = curIndex2.next;
+            curRlt = curRlt.next!;
+            curIndex2 = curIndex2.next!;
         }
     }
-};
+}
+
+class ListNode {
+
+    val: number
+    next: ListNode | null
+
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.next = (next === undefined ? null : next)
+    }
+}

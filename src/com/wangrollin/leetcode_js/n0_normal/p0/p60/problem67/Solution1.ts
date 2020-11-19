@@ -23,23 +23,17 @@
  * Solution1
  * string 数字加法器
  */
+function addBinary(a: string, b: string): string {
 
-/**
- * @param {string} a
- * @param {string} b
- * @return {string}
- */
-let addBinary = function (a, b) {
-
-    let len = Math.max(a.length, b.length);
-    let carry = 0;
+    let len: number = Math.max(a.length, b.length);
+    let carry: number = 0;
     a = [...a].reverse().join("");
     b = [...b].reverse().join("");
-    let result = "";
+    let result: string = "";
 
-    for (let i = 0; i < len; i++) {
+    for (let i: number = 0; i < len; i++) {
 
-        let sum = carry;
+        let sum: number = carry;
         if (i < a.length) {
             sum += a[i].charCodeAt(0) - '0'.charCodeAt(0);
         }
@@ -55,4 +49,4 @@ let addBinary = function (a, b) {
     }
 
     return [...result].reverse().join("");
-};
+}

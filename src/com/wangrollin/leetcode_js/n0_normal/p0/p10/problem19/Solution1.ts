@@ -19,27 +19,23 @@
  * Solution1
  * 加一个前置节点是精髓
  */
+export {}
 
-/**
- * @param {ListNode} head
- * @param {number} n
- * @return {ListNode}
- */
-let removeNthFromEnd = function (head, n) {
+function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
 
-    let fastNode = head;
-    let slowNode = head;
-    let preNode = new ListNode(0);
+    let fastNode: ListNode = head!;
+    let slowNode: ListNode = head!;
+    let preNode: ListNode = new ListNode(0);
     preNode.next = head;
 
-    for (let i = 0; i < n; i++) {
-        fastNode = fastNode.next;
+    for (let i: number = 0; i < n; i++) {
+        fastNode = fastNode.next!;
     }
 
     while (fastNode !== null) {
-        fastNode = fastNode.next;
-        slowNode = slowNode.next;
-        preNode = preNode.next;
+        fastNode = fastNode.next!;
+        slowNode = slowNode.next!;
+        preNode = preNode.next!;
     }
 
     if (slowNode === head) {
@@ -48,12 +44,15 @@ let removeNthFromEnd = function (head, n) {
         preNode.next = slowNode.next;
         return head;
     }
-};
+}
 
 class ListNode {
 
-    constructor(val) {
-        this.val = val;
-        this.next = null;
+    val: number
+    next: ListNode | null
+
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.next = (next === undefined ? null : next)
     }
 }

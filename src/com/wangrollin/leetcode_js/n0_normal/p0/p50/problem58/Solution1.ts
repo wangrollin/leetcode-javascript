@@ -17,21 +17,16 @@
  * Solution1
  * 分割字符串
  */
-
-/**
- * @param {string} s
- * @return {number}
- */
-let lengthOfLastWord = function (s) {
+function lengthOfLastWord(s: string): number {
 
     if (s == null || s === "") {
         return 0;
     }
 
-    let words = s.trim().split(" ");
+    let words: Array<string> = s.trim().split(" ");
     if (words.length === 0) {
         return 0;
     }
 
     return words[words.length - 1].length;
-};
+}

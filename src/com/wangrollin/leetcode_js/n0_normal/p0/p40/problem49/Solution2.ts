@@ -22,7 +22,9 @@
  * Solution2
  * 使用letter count map作为key，存储list，最后汇总
  */
-function groupAnagrams2(strs: string[]): string[][] {
+export {}
+
+function groupAnagrams(strs: string[]): string[][] {
 
     let resultMap: Map<string, Array<string>> = new Map();
 
