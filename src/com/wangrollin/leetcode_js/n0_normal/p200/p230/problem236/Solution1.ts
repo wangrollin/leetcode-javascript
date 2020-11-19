@@ -27,29 +27,18 @@
  * Solution1
  * 把返回值当作最终答案
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @param {TreeNode} p
- * @param {TreeNode} q
- * @return {TreeNode}
- */
-let lowestCommonAncestor = function (root, p, q) {
+function lowestCommonAncestor(root: TreeNode | null,
+                              p: TreeNode | null,
+                              q: TreeNode | null): TreeNode | null {
 
     if (root == null || root === p || root === q) {
         return root;
     }
 
-    let left = lowestCommonAncestor(root.left, p, q);
-    let right = lowestCommonAncestor(root.right, p, q);
+    let left: TreeNode | null = lowestCommonAncestor(root.left, p, q);
+    let right: TreeNode | null = lowestCommonAncestor(root.right, p, q);
 
     if (left == null && right == null) {
         return null;
@@ -61,4 +50,17 @@ let lowestCommonAncestor = function (root, p, q) {
         return left;
     }
     return root;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

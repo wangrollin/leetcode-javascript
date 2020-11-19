@@ -23,34 +23,30 @@
  * Solution1
  * 在计算的过程中进行剪枝
  */
+export {}
 
-/**
- * @param {number[][]} matrix
- * @param {number} target
- * @return {boolean}
- */
-let searchMatrix = function (matrix, target) {
+function searchMatrix(matrix: number[][], target: number): boolean {
 
     if (matrix == null || matrix.length === 0) {
         return false;
     }
-    let X = matrix[0].length;
-    if (X === 0) {
+    let xMax: number = matrix[0].length;
+    if (xMax === 0) {
         return false;
     }
 
     for (const intArr of matrix) {
-        for (let x = 0; x < X; x++) {
+        for (let x: number = 0; x < xMax; x++) {
             if (intArr[x] === target) {
                 return true;
             } else if (intArr[x] < target) {
                 continue;
             } else {
-                X = x;
+                xMax = x;
                 break;
             }
         }
     }
 
     return false;
-};
+}

@@ -26,21 +26,21 @@
  * Solution1
  * 与下一个节点交换
  */
+export {}
+
+function deleteNode(root: ListNode | null): void {
+
+    root!.val = root!.next!.val;
+    root!.next = root!.next!.next;
+}
 
 class ListNode {
 
-    constructor(val) {
-        this.val = val;
-        this.next = null;
+    val: number
+    next: ListNode | null
+
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.next = (next === undefined ? null : next)
     }
 }
-
-/**
- * @param {ListNode} node
- * @return {void} Do not return anything, modify node in-place instead.
- */
-let deleteNode = function (node) {
-
-    node.val = node.next.val;
-    node.next = node.next.next;
-};

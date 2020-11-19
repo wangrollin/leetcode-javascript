@@ -22,37 +22,19 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+export {}
 
-class TreeNode {
+function binaryTreePaths(root: TreeNode | null): string[] {
 
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {string[]}
- */
-let binaryTreePaths = function (root) {
-
-    let result = [];
+    let result: string[] = [];
     if (root == null) {
         return result;
     }
-    calPath(root, "", result);
+    calPath(root!, "", result);
     return result;
-};
+}
 
-/**
- *
- * @param {TreeNode} node
- * @param {string} curPath
- * @param {string[]} result
- * @return {null}
- */
-let calPath = function (node, curPath, result) {
+function calPath(node: TreeNode, curPath: string, result: string[]) {
 
     if (curPath !== "") {
         curPath += "->";
@@ -63,10 +45,23 @@ let calPath = function (node, curPath, result) {
         result.push(curPath);
     } else {
         if (node.left != null) {
-            calPath(node.left, curPath, result);
+            calPath(node.left!, curPath, result);
         }
         if (node.right != null) {
-            calPath(node.right, curPath, result);
+            calPath(node.right!, curPath, result);
         }
     }
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

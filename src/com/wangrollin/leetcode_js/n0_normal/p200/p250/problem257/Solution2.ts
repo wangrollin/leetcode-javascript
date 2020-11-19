@@ -22,49 +22,51 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
+function binaryTreePaths(root: TreeNode | null): string[] {
 
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {string[]}
- */
-let binaryTreePaths = function (root) {
-
-    let result = [];
+    let result: string[] = [];
     if (root == null) {
         return result;
     }
 
-    let nodeQueue = [];
-    nodeQueue.push(root);
-    let pathQueue = [];
+    let nodeQueue: TreeNode[] = [];
+    nodeQueue.push(root!);
+    let pathQueue: string[] = [];
     pathQueue.push(root.val.toString());
 
     while (nodeQueue.length !== 0) {
 
-        let node = nodeQueue.shift();
-        let curPath = pathQueue.shift();
+        let node: TreeNode = nodeQueue.shift()!;
+        let curPath: string = pathQueue.shift()!;
 
         if (node.left == null && node.right == null) {
             result.push(curPath);
         } else {
             if (node.left != null) {
-                nodeQueue.push(node.left);
-                pathQueue.push(curPath + "->" + node.left.val);
+                nodeQueue.push(node.left!);
+                pathQueue.push(curPath + "->" + node.left!.val);
             }
             if (node.right != null) {
-                nodeQueue.push(node.right);
-                pathQueue.push(curPath + "->" + node.right.val);
+                nodeQueue.push(node.right!);
+                pathQueue.push(curPath + "->" + node.right!.val);
             }
         }
     }
 
     return result;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

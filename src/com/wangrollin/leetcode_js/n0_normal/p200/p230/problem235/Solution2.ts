@@ -24,45 +24,38 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree
  *
- * Solution1
- * 深度优先遍历，DFS，递归
+ * Solution2
+ * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
+function lowestCommonAncestor(root: TreeNode | null,
+                              p: TreeNode | null,
+                              q: TreeNode | null): TreeNode | null {
 
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
+    let min: number = Math.min(p!.val, q!.val);
+    let max: number = Math.max(p!.val, q!.val);
+
+    while (true) {
+        if (root!.val < min) {
+            root = root!.right;
+        } else if (root!.val > max) {
+            root = root!.left;
+        } else {
+            return root;
+        }
     }
 }
 
-/**
- * @param {TreeNode} root
- * @param {TreeNode} p
- * @param {TreeNode} q
- * @return {TreeNode}
- */
-let lowestCommonAncestor = function (root, p, q) {
+class TreeNode {
 
-    let min = Math.min(p.val, q.val);
-    let max = Math.max(p.val, q.val);
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
 
-    return findAncestor(root, min, max);
-};
-
-/**
- * @param {TreeNode} node
- * @param {number} min
- * @param {number} max
- * @return {TreeNode}
- */
-let findAncestor = function (node, min, max) {
-
-    if (node.val < min) {
-        return findAncestor(node.right, min, max);
-    } else if (node.val > max) {
-        return findAncestor(node.left, min, max);
-    } else {
-        return node;
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
     }
-};
+}
