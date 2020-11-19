@@ -27,28 +27,30 @@
  * Solution1
  * 深度优先遍历，DFS，递归
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {TreeNode}
- */
-let invertTree = function (root) {
+function invertTree(root: TreeNode | null): TreeNode | null {
 
     if (root != null) {
         invertTree(root.left);
         invertTree((root.right));
-        let temp = root.left;
+        let temp: TreeNode | null = root.left;
         root.left = root.right;
         root.right = temp;
     }
 
     return root;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

@@ -24,16 +24,12 @@
  * Solution1
  * set版窗口
  */
+export {}
 
-/**
- * @param {number[]} nums
- * @param {number} k
- * @return {boolean}
- */
-let containsNearbyDuplicate = function (nums, k) {
+function containsNearbyDuplicate(nums: number[], k: number): boolean {
 
-    let set = new Set();
-    for (let i = 0; i < nums.length; i++) {
+    let set: Set<number> = new Set();
+    for (let i: number = 0; i < nums.length; i++) {
         if (set.has(nums[i])) {
             return true;
         }
@@ -43,4 +39,4 @@ let containsNearbyDuplicate = function (nums, k) {
         }
     }
     return false;
-};
+}

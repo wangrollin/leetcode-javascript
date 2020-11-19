@@ -13,25 +13,13 @@
  * Solution1
  * 哨兵算法
  */
+export {}
 
-class ListNode {
+function removeElements(head: ListNode | null, val: number): ListNode | null {
 
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-    }
-}
-
-/**
- * @param {ListNode} head
- * @param {number} val
- * @return {ListNode}
- */
-let removeElements = function (head, val) {
-
-    let firstNode = new ListNode(0);
+    let firstNode: ListNode = new ListNode(0);
     firstNode.next = head;
-    let curNode = firstNode;
+    let curNode: ListNode = firstNode;
     while (curNode.next != null) {
         if (curNode.next.val === val) {
             curNode.next = curNode.next.next;
@@ -40,4 +28,15 @@ let removeElements = function (head, val) {
         }
     }
     return firstNode.next;
-};
+}
+
+class ListNode {
+
+    val: number
+    next: ListNode | null
+
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.next = (next === undefined ? null : next)
+    }
+}

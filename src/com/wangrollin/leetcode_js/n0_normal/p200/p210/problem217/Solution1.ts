@@ -22,20 +22,17 @@
  * Solution1
  * 排序
  */
+export {}
 
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-let containsDuplicate = function (nums) {
+function containsDuplicate(nums: number[]): boolean {
 
     nums.sort();
 
-    for (let i = 1; i < nums.length; i++) {
+    for (let i: number = 1; i < nums.length; i++) {
         if (nums[i] === nums[i - 1]) {
             return true;
         }
     }
 
     return false;
-};
+}

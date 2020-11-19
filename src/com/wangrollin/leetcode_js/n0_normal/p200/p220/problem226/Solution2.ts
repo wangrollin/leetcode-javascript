@@ -27,32 +27,21 @@
  * Solution2
  * 广度优先遍历，BFS，迭代
  */
+export {}
 
-class TreeNode {
-
-    constructor(val) {
-        this.val = val;
-        this.left = this.right = null;
-    }
-}
-
-/**
- * @param {TreeNode} root
- * @return {TreeNode}
- */
-let invertTree = function (root) {
+function invertTree(root: TreeNode | null): TreeNode | null {
 
     if (root == null) {
         return null;
     }
 
-    let queue = [];
+    let queue: Array<TreeNode | null> = [];
     queue.push(root);
 
     while (queue.length !== 0) {
 
-        let node = queue.shift();
-        let temp = node.left;
+        let node: TreeNode = queue.shift()!;
+        let temp: TreeNode | null = node.left;
         node.left = node.right;
         node.right = temp;
         if (node.left != null) {
@@ -64,4 +53,17 @@ let invertTree = function (root) {
     }
 
     return root;
-};
+}
+
+class TreeNode {
+
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}

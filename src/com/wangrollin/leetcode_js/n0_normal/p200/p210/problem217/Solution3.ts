@@ -19,16 +19,12 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/contains-duplicate
  *
- * Solution2
- * [...Set]
+ * Solution3
+ * Set
  */
+export {}
 
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-let containsDuplicate = function (nums) {
+function containsDuplicate(nums: number[]): boolean {
 
-    let uniqueNums = [...new Set(nums)];
-    return uniqueNums.length !== nums.length;
-};
+    return nums.length !== new Set(nums).size;
+}
