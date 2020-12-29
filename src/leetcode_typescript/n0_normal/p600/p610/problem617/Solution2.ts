@@ -26,10 +26,10 @@
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/merge-two-binary-trees
  *
- * Solution1
- * 递归
+ * Solution2
+ * 迭代
  */
-export {}
+export {};
 
 function mergeTrees(t1: TreeNode | null, t2: TreeNode | null): TreeNode | null {
 
@@ -40,25 +40,37 @@ function mergeTrees(t1: TreeNode | null, t2: TreeNode | null): TreeNode | null {
         return t1;
     }
 
-    merge(t1!, t2!);
-    return t1;
-}
-
-function merge(t1: TreeNode, t2: TreeNode) {
-
     t1.val += t2.val;
+    let q1: TreeNode[] = [];
+    q1.push(t1);
+    let q2: TreeNode[] = [];
+    q2.push(t2);
 
-    if (t1.left != null && t2.left != null) {
-        merge(t1.left, t2.left);
-    } else if (t1.left == null && t2.left != null) {
-        t1.left = t2.left;
+    while (q1.length != 0) {
+        let size: number = q1.length;
+        while (size > 0) {
+            let node1: TreeNode = q1.shift()!;
+            let node2: TreeNode = q2.shift()!;
+            if (node1.left != null && node2.left != null) {
+                node1.left.val += node2.left.val;
+                q1.push(node1.left);
+                q2.push(node2.left);
+            } else if (node1.left == null && node2.left != null) {
+                node1.left = node2.left;
+            }
+
+            if (node1.right != null && node2.right != null) {
+                node1.right.val += node2.right.val;
+                q1.push(node1.right);
+                q2.push(node2.right);
+            } else if (node1.right == null && node2.right != null) {
+                node1.right = node2.right;
+            }
+            size--;
+        }
     }
 
-    if (t1.right != null && t2.right != null) {
-        merge(t1.right, t2.right);
-    } else if (t1.right == null && t2.right != null) {
-        t1.right = t2.right;
-    }
+    return t1;
 }
 
 class TreeNode {
